@@ -56,7 +56,7 @@ const sendEmail = async (req, res) => {
       text: `
 Dear User,
 
-Thank you for registering with us. To complete your registration, please use the following One-Time Password (OTP):
+Thank you for signing in with us. To complete your sign in process, please use the following One-Time Password (OTP):
 
 OTP: ${otp}
 
@@ -65,7 +65,7 @@ This OTP is valid for 1 hour.
 If you did not request this registration, please ignore this email.
 
 Best regards,
-The Team
+Ftouni Capital Team
 `,
     };
 
@@ -205,12 +205,10 @@ The Team
     });
 
     // Respond with user data including OTP
-    res
-      .status(200)
-      .json({
-        status: true,
-        data: { _id: user._id, name, email, phonenumber, otp },
-      });
+    res.status(200).json({
+      status: true,
+      data: { _id: user._id, name, email, phonenumber, otp },
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
